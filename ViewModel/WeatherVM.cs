@@ -15,7 +15,7 @@ namespace WeatherApp.ViewModel
     public class WeatherVM : INotifyPropertyChanged //Makes the connection with the view through binding
     {
         //query property will call the method to trigger the event OnPropertyChanged
-        //a text box from the view as instance can subscribe to this property and upadate the values of the view and model
+        //a text box from the view as instance can subscribed to this property and upadate the values of the view and model
         private string query;
 
         public string Query
@@ -107,20 +107,23 @@ namespace WeatherApp.ViewModel
             //Query is the prop. containing the text from the TextBox of the UI
             var cities = await AccuWeatherHelper.GetCities(Query);
 
-            Cities.Clear(); 
+            Cities.Clear();
             foreach (var city in cities)
             {
                 Cities.Add(city);
             }
         }
 
-        //Implementation of INotifyPropertieChanged that triggers and event when the view or the modelview properties is changed
+        //Implementation of INotifyPropertieChanged that triggers an event when the view or the modelview properties is changed.
+        //This will ultimately notify whoever is subscribed to this event.
         public event PropertyChangedEventHandler? PropertyChanged;
 
         /// <summary>
-        /// Invoke PropertyChangedEventHandler and a property is changed.
+        /// Invoke PropertyChangedEventHandler and a property is changed. 
+        /// 
+        /// A property is changed by the setter of the property.
         /// </summary>
-        /// <param name="propertyName">Name of the property that was changed.</param>
+        /// <param name="propertyName">Name of the property that is changing.</param>
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

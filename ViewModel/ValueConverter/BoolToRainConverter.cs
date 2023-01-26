@@ -8,6 +8,7 @@ using System.Windows.Data;
 
 namespace WeatherApp.ViewModel.ValueConverter
 {
+    //Converting to display on the UI if the weather has precipitation
     public class BoolToRainConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

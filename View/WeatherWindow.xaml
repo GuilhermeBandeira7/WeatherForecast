@@ -8,7 +8,8 @@
         xmlns:converters ="clr-namespace:WeatherApp.ViewModel.ValueConverter"
         mc:Ignorable="d"
         Title="WeatherWindow" Height="600" Width="400" FontFamily="Arial Alternative">
-
+    
+    <!--vm is the instance of the WeatherVM-->
     <Window.Resources>
         <vm:WeatherVM x:Key="vm"/>
         <converters:BoolToRainConverter x:Key="boolToRain"/>
@@ -20,7 +21,9 @@
         </Grid.RowDefinitions>
         <StackPanel Margin="20">
             <TextBlock Text="Search for City"/>
+            <!--Binding to Query property in the VM and subscribing to INotifyPropertyChanged-->
             <TextBox Text="{Binding Query, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <!--Command replaces an event handler-->
             <Button Margin="0,10"
                     Command="{Binding SearchCommand}"
                     CommandParameter="{Binding Query}"

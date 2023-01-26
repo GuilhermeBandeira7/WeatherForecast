@@ -10,15 +10,17 @@ using WeatherApp.Model;
 
 namespace WeatherApp.ViewModel.Helpers
 {
-    public class AccuWeatherHelper //Responsible for get requests of cities and weather conditions
+    //Responsible for getting requests of cities and weather conditions from the accu weather api
+    public class AccuWeatherHelper 
     {
+        //Connecting to the API
         public const string BASE_URL = "http://dataservice.accuweather.com";
         public const string AUTOCOMPLETE_ENDPOINT = "/locations/v1/cities/autocomplete?apikey={0}&q={1}"; //endpoint to get the cities
         public const string CURRENT_CONDITIONS_ENDPOINT = "/currentconditions/v1/{0}?apikey={1}"; //endpoint to get weather conditions
         public const string API_KEY = "G7YfEKyBOqGqvfnvGSvRsNSLZVB9EJDj";
 
         /// <summary>
-        /// Get async request that returns a list of cities
+        /// Get async request that returns a list of cities from the api
         /// </summary>
         /// <param name="query">Name of the city in the textbox</param>
         /// <returns>List of cities from the API</returns>
